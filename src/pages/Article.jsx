@@ -1,19 +1,30 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import DocViewer from "react-doc-viewer";
 import Title from "../components/Title";
-import doc from "../assets/ApuntesCasoNix.docx";
+import apiClient from "../api/apiClient";
 import MainTemplate from "../templates/MainTemplate";
 
 const Article = ({ articles }) => {
     const { id } = useParams();
-    const article = articles.find((article) => article.id === parseInt(id));
+    const [article, setArticle] = useState(null);
+
+    useEffect(()=>{
+        const fetchArticle =async () => {
+            try{
+                const articles = await apiClient.getArticles();
+                const article = articles.find((article) => article.id === parseInt(id));
+                setArticle(foundArticle);
+            } catch (error) {
+                console.error("Error al cargar el artículo", error);
+            }
+        };
+        fetchArticle();
+    }, [id]);
 
     if (!article) {
-        return <p>Artículo no encontrado o cargando ...</p>;
+        return <MainTemplate><p>Artículo no encontrado o cargando...</p></MainTemplate>;
     }
-
-    console.log(doc);
 
     return (
         <MainTemplate>
