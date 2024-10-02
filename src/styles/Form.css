@@ -1,0 +1,16 @@
+.form {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group:last-child {
+    margin-bottom: 0;
+  }
+  
