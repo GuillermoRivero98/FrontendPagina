@@ -1,0 +1,31 @@
+.custom-nav {
+    background-color: #007bff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo{
+    text-decoration: none;
+    color: white;
+}
+
+.burger-menu{
+    display: none;
+}
+
+.navbar-menu.active{
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-item{
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+
+.navbar-item:hover{
+    background-color: #0056b3;
+}

@@ -1,0 +1,13 @@
+.title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.title--large{
+    font-size: 2rem;
+}
+
+.title--small{
+    font-size: 1.2rem;
+}

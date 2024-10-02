@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { approveArticle } from "../api/approveArticle";
+import Button from '../components/Button';
 
 const Home = ({ articles, fetchData }) => {
   const [approving, setApproving] = useState(false);
@@ -33,38 +34,28 @@ const Home = ({ articles, fetchData }) => {
   }
 
   return (
-    <section className='section'>
+    <section className="articles-section">
       <div className="container">
-        <h1 className="title has-text-centered">Bienvenido a Mis Primeros Pasos</h1>
-        <p className="subtitle has-text-centered">
-          Este es el sitio principal con noticias y artículos sobre la educación en la primera infancia.
+        <h1 className="centered">Bienvenido a Mis Primeros Pasos</h1>
+        <p className="centered">
+          Noticias y artículos sobre educación en la primera infancia.
         </p>
 
-        <div className="articles-section" >
-          <h3 className="title is-4">Artículos Destacados</h3>
-
-          <div className="columns is-multiline">
-            {articles.map((article) => (
-              <div key={article.id} className="column is-one-third">
-                <div className="box">
-                  <h4 className="title is-5">{article.title}</h4>
-                  <p className="subtitle is-6">{article.author}</p>
-                  <div className='content'>
-                    <p>{article.content.substring(0, 100)}</p>
-                  </div>
-                    <button
-                      className={`button is-primary is-fullwidth ${approving ? "is-loading" : ""}`}
-                      onClick={() => handleApprove(article.id)}
-                    >
-                      Aprobar
-                    </button>
-                  </div>
-                </div>
-
-            ))}
+        <div className="articles-grid" >
+          {articles.map((article) => (
+            <div key={article.id} className="article-box">
+              <h4>{article.title}</h4>
+              <p>{article.author}</p>
+              <div>
+                <p>{article.content.substring(0, 100)}...</p>
               </div>
+              <Button onClick={() => handleApprove(article.id)} loading={approving}>
+                Aprobar
+              </Button>
+            </div>
+          ))}
         </div>
-        </div>
+      </div>
     </section>
   );
 };

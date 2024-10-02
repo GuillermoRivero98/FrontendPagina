@@ -1,0 +1,56 @@
+.article-section{
+    padding: 40px;
+    background-color: #f0f4f8;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.centred{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.article-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Grid flexible para diferentes pantallas */
+    gap: 20px;
+}
+
+.article.box{
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease;/* Efecto de sombra suave */
+}
+
+.article-box:hover{
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);/* Sombra al pasar sobre un artículo */
+}
+
+.article-box h4{
+    font-size: 1.5rem;
+    margin-top: 0;
+    color: #333;
+}
+
+.article-box p{
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.loading-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.loading-text{
+    font-size: 1.2rem;
+    color: #666;
+}
