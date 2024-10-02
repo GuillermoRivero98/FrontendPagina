@@ -4,7 +4,7 @@ import Input from "../atoms/Input";
 import Label from "../atoms/Label";
 import Button from "../atoms/Button";
 
-const Form = ({ onSubmit, children }) => {
+const Form = ({ fields, onSubmit, buttonLabel }) => {
     return(
         <form className="form" onSubmit={onSubmit}>
             {fields.map((field, index) => (

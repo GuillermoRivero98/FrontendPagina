@@ -1,0 +1,15 @@
+.footer {
+    padding: 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+  }
+  
+  .footer__links {
+    margin-bottom: 10px;
+  }
+  
+  .footer__copy {
+    font-size: 0.9rem;
+    color: #6c757d;
+  }
+  
