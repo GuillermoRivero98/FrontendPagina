@@ -1,27 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { approveArticle } from "../api/approveArticle";
-import Button from '../components/Button';
+import apiClient from '../api/apiClient';
+import ArticleSection from '../components/ArticleSection';
+import MainTemplate from '../templates/MainTemplate';
+
 
 const Home = ({ articles, fetchData }) => {
-  const [approving, setApproving] = useState(false);
+  const [approving, setApproving] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchData().finally(() => setLoading(false));
-  }, [fetchData]);
+    const fetchData = async () => {
+      const articlesData = await apiClient.getArticles();
+      setArticles(articlesData);
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
 
-  const handleApprove = async (articleId) => {
-    try {
-      setApproving(true);
-      await approveArticle(articleId);
-      fetchData();
-      alert("Artículo aprobado correctamente");
-    } catch (error) {
-      console.error("Error al aprobar el artículo", error);
-    } finally {
-      setApproving(false);
-    }
-  };
   if (loading) {
     return (
       <section className="section">
@@ -33,30 +28,14 @@ const Home = ({ articles, fetchData }) => {
     );
   }
 
-  return (
-    <section className="articles-section">
-      <div className="container">
-        <h1 className="centered">Bienvenido a Mis Primeros Pasos</h1>
-        <p className="centered">
-          Noticias y artículos sobre educación en la primera infancia.
-        </p>
+  if (loading) {
+    return <MainTemplate><p>Cargando...</p></MainTemplate>;
+  }
 
-        <div className="articles-grid" >
-          {articles.map((article) => (
-            <div key={article.id} className="article-box">
-              <h4>{article.title}</h4>
-              <p>{article.author}</p>
-              <div>
-                <p>{article.content.substring(0, 100)}...</p>
-              </div>
-              <Button onClick={() => handleApprove(article.id)} loading={approving}>
-                Aprobar
-              </Button>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+  return (
+    <MainTemplate>
+      <ArticleSection articles={articles} />
+    </MainTemplate>
   );
 };
 

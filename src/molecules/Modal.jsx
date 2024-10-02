@@ -9,8 +9,19 @@ const Modal = ({
     color = "white",
     closeOnOutsideClick = true,
     showCloseButton = true
-
 }) => {
+    useEffect(() => {
+        const hadleEscape = (e) => {
+            if (e.key === "Escape") {
+                hadleClose();
+            }
+        };
+        document.addEventListener("keydown", hadleEscape);
+        return () => {
+            document.removeEventListener("keydown", hadleEscape);
+        };
+    }, [hadleClose]);
+
     if (!show) return null;
 
     const handleClose = (e) => {
@@ -19,12 +30,12 @@ const Modal = ({
         }
     };
 
-    const modalSizeClass = "modal-${size}";
-    const modalColorClass = "modal-${color}";
+    const modalSizeClass = `modal--${size}`;
+    const modalColorClass = `modal--${color}`;
 
     return (
-        <div className="modal-overlay" onClick={handleOverlayClick}>
-            <div className={"modal-content ${modalSizeClass} ${modalColorClass}"}>
+        <div className="modal-overlay" onClick={handleClose}>
+            <div className={`modal-content ${modalSizeClass} ${modalColorClass}`}>
                 {showCloseButton && (
                     <button className="modal-close" onClick={handleClose}>Cerrar</button>
                 )}
