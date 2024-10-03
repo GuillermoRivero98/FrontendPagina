@@ -1,31 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
-import Header from "./pages/Header";
+import Header from "./organisms/Header";
+import Footer from "./organisms/Footer";
 import Home from "./pages/Home";
-import New from "./pages/News";
-import Article from "./pages/Article";
 import SubmitArticle from "./pages/SubmitArticle";
-import { getArticles } from "./api/getArticles"
-import 'bulma/css/bulma.min.css';
-import './App.css';
+import Article from "./pages/Article";
+import apiClient from "./api/apiClient";
+import "./App.css";
 
+
+const SubmitArticle = React.lazy(() => import("./pages/SubmitArticle"));
+const Article = React.lazy(() => import("./pages/Article"));
 
 function App() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-const fetchData = async () => {
-  try{
-    const fetchArticles= await getArticles();
-    
-    setArticles(fetchArticles);
-  }catch(error){
-    setError("Error al cargar los artículos");
-  }finally{
-    setLoading(false);
-  }
-};
+  const fetchData = async () => {
+    try {
+      const fetchArticles = await apiClient.getArticles();
+      setArticles(fetchArticles);
+
+    } catch (error) {
+      setError("Error al cargar los artículos");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     fetchData();
@@ -44,15 +46,12 @@ const fetchData = async () => {
       <Header />
       <main>
         <Routes>
-          <Route path="/" element={<Home articles={articles} fetchData={fetchData}/>} />
-          <Route path="/new" element={<New articles={articles} />} />
+          <Route path="/" element={<Home articles={articles} fetchData={fetchData} />} />
+          <Route path="/submit" element={<SubmitArticle fetchData={fetchData} />} />
           <Route path="/article/:id" element={<Article articles={articles} />} />
-          <Route path="/submit" element={<SubmitArticle />} />
         </Routes>
       </main>
-      <footer class="custom-footer">
-        <p>&copy; 2024 Revista Primera Infancia. Todos los derechos reservados.</p>
-      </footer>
+      <Footer />
     </Router>
   );
 }

@@ -13,7 +13,7 @@ const Article = ({ articles }) => {
         const fetchArticle =async () => {
             try{
                 const articles = await apiClient.getArticles();
-                const article = articles.find((article) => article.id === parseInt(id));
+                const foundArticle = articles.find((article) => article.id === parseInt(id));
                 setArticle(foundArticle);
             } catch (error) {
                 console.error("Error al cargar el artículo", error);

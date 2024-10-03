@@ -16,7 +16,7 @@ const apiClient = {
 
     createArticle: async (article) => {
         try {
-            const response = await fetch(`${BASE_URL}/articles`, {
+            const response = await fetch(`${API_URL}/articles`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(article),
@@ -33,7 +33,7 @@ const apiClient = {
 
     updateArticle: async (article) => {
         try {
-            const response = await fetch(`${BASE_URL}/articles/${article.id}`, {
+            const response = await fetch(`${API_URL}/articles/${article.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(article),
@@ -50,7 +50,7 @@ const apiClient = {
 
     deleteArticle: async (id) => {
         try {
-            const response = await fetch(`${BASE_URL}/articles/${id}`, {
+            const response = await fetch(`${API_URL}/articles/${id}`, {
                 method: 'DELETE',
             });
             if (!response.ok) {
@@ -64,7 +64,7 @@ const apiClient = {
 
     approveArticle: async (id) => {
         try {
-            const response = await fetch(`${BASE_URL}/articles/${id}/approve`, {
+            const response = await fetch(`${API_URL}/articles/${id}/approve`, {
                 method: 'PUT',
             });
             if (!response.ok) {
