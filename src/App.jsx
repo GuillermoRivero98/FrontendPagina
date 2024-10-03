@@ -3,13 +3,11 @@ import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./organisms/Header";
 import Footer from "./organisms/Footer";
 import Home from "./pages/Home";
-import SubmitArticle from "./pages/SubmitArticle";
-import Article from "./pages/Article";
 import apiClient from "./api/apiClient";
-import "./App.css";
+import "./styles/App.css";
 
 
-const SubmitArticle = React.lazy(() => import("./pages/SubmitArticle"));
+const SubmitArticle = React.lazy(() => import('./pages/SubmitArticle'));
 const Article = React.lazy(() => import("./pages/Article"));
 
 function App() {

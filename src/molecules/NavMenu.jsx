@@ -1,6 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
 import NavLink from "../atoms/NavLink";
-import "./NavMenu.css";
 
 const NavMenu = () => {
     const [isActive, setIsActive] = useState(false);

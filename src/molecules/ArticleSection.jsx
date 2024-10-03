@@ -1,5 +1,4 @@
 import React from "react";
-import "./ArticleSection.css";
 import Title from "../atoms/Title";
 import Button from "../atoms/Button";
 

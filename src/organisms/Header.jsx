@@ -1,5 +1,4 @@
 import React from "react";
-import "./Header.css";
 import NavMenu from "../molecules/NavMenu";
 import Logo from "../atoms/Logo";
 

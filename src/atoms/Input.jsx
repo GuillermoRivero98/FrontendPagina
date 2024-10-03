@@ -1,16 +1,15 @@
 import React from "react";
-import "./Input.css";
 
-const Input = ({ type = "text", placeholder, value, onChange }) => {
+const Input = ({  type = "text", placeholder, value, onChange, name, disabled = false }) => {
     return (
         <input
-            className="input"
-            type={type}
-            placeholder={placeholder}
-            value={value}
-            onChange={onChange}
-            name={name}
-            disabled={disabled}
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        name={name} 
+        disabled={disabled} 
+        className="input-field"
         />
     );
 }

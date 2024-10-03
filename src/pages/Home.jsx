@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import apiClient from '../api/apiClient';
-import ArticleSection from '../components/ArticleSection';
+import ArticleSection from '../molecules/ArticleSection';
 import MainTemplate from '../templates/MainTemplate';
 
 
-const Home = ({ articles, fetchData }) => {
+const Home = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -18,7 +18,7 @@ const Home = ({ articles, fetchData }) => {
       console.error("Error al cargar los artículos", error);
     }
     };
-    fetchArticles();
+    fetchData();
   }, []);
 
   if (loading) {

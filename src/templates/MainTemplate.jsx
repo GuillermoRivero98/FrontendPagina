@@ -1,5 +1,4 @@
 import React from "react";
-import "./MainTemplate.css";
 import Header from "../organisms/Header";
 import Footer from "../organisms/Footer";
 

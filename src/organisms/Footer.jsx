@@ -1,5 +1,4 @@
 import React from "react";
-import "./Footer.css";
 import NavLink from "../atoms/NavLink";
 
 const Footer = () => {

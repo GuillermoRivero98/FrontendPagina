@@ -1,5 +1,4 @@
 import React from "react";
-import "./Form.css";
 import Input from "../atoms/Input";
 import Label from "../atoms/Label";
 import Button from "../atoms/Button";

@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import DocViewer from "react-doc-viewer";
-import Title from "../components/Title";
+import Title from "../atoms/Title";
 import apiClient from "../api/apiClient";
 import MainTemplate from "../templates/MainTemplate";
+import doc from "../assets/ApuntesCasoNix.docx"; 
 
 const Article = ({ articles }) => {
     const { id } = useParams();
