@@ -1,0 +1,41 @@
+.navbar {
+  background-color: rgba(180, 180, 17, 0.696) !important;
+  padding: 1rem;
+
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+  }
+
+  .nav-link {
+    color: white; /* Color del texto */
+    padding: 0.75rem 1.25rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: var(--secondary-color); /* Color de fondo al pasar el mouse */
+      color: white; /* Color del texto al pasar el mouse */
+    }
+  }
+
+  .nav-link.active {
+    font-weight: bold;
+    background-color: var(--secondary-color); /* Color para la pestaña activa */
+    border-radius: 0.5rem; /* Bordes redondeados */
+  }
+
+  .navbar-toggler {
+    border-color: white; /* Color del borde del botón de navegación */
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Icono del botón de navegación */
+    }
+  }
+
+  .navbar-nav {
+    .nav-item {
+      margin-left: 1rem; /* Espacio entre los elementos de navegación */
+    }
+  }
+}

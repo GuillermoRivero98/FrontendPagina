@@ -1,0 +1,16 @@
+.btn {
+  padding: var(--padding-base);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-base);
+  border-radius: 0.375rem; // Bootstrap border-radius
+  transition: background-color 0.3s;
+
+  &.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+
+    &:hover {
+      background-color: var(--secondary-color);
+    }
+  }
+}

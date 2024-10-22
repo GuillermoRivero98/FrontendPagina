@@ -1,0 +1,15 @@
+.modal-90w {
+  max-width: 90%; // Ajuste para que ocupe el 90% del ancho
+  width: 100%;
+  height: 100vh; // Ocupa el 100% de la altura de la pantalla
+}
+
+.modal-body {
+  padding: 0; // Elimina el padding para que el PDF ocupe todo el espacio
+}
+
+iframe {
+  width: 100%;
+  height: 100vh; // Ocupa el 100% de la ventana visible
+  border: none; // Elimina el borde
+}

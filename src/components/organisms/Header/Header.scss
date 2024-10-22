@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; // Asegúrate de que el logo y la navegación estén separados
+  padding: 10px 20px; // Padding para todo el header
+  background-color: rgba(180, 180, 17, 0.696) !important;
+
+  &__logo {
+    img {
+      width: 80px; // Ajusta el tamaño según sea necesario
+      height: auto; // Mantiene la proporción del logo
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    gap: 10px; // Espacio entre opciones de navegación
+    list-style: none; // Elimina los puntos de la lista
+
+    a {
+      text-decoration: none; // Sin subrayado
+      color: white; // Color del texto
+      padding: 10px 15px; // Padding para mejorar la usabilidad
+      transition: background-color 0.3s ease, color 0.3s ease; // Transición suave
+
+      &:hover {
+        background-color: var(--secondary-color); // Cambia el fondo al pasar el mouse
+        color: white; // Cambia el color del texto al pasar el mouse
+      }
+    }
+  }
+}

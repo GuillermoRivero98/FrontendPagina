@@ -7,12 +7,12 @@ const useFetchArticleById = (id) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    let isMounted = true; // Agregar flag para evitar la actualización en un componente desmontado
+    let isMounted = true; 
 
     const fetchArticle = async () => {
       try {
         const response = await axios.get(`http://localhost:3001/articles/${id}`);
-        if (isMounted) { // Verifica si el componente sigue montado
+        if (isMounted) { 
           setArticle(response.data);
           setLoading(false);
         }
@@ -27,7 +27,7 @@ const useFetchArticleById = (id) => {
     fetchArticle();
 
     return () => {
-      isMounted = false; // Marca como desmontado cuando el componente se desmonte
+      isMounted = false; 
     };
   }, [id]);
 
