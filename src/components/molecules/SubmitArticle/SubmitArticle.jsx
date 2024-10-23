@@ -11,14 +11,17 @@ const SubmitArticle = ({ fetchData, handleClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Crear el objeto FormData para enviar los datos del artículo
     const formData = new FormData();
     formData.append('title', title);
     formData.append('author', author);
-    formData.append('pdf', pdfFile); // Cambia aquí para agregar el archivo PDF
+    formData.append('pdf', pdfFile); // Enviar el archivo PDF
 
     try {
-      await articleService.createArticle(formData); // Cambia aquí
-      fetchData();
+      // Llamar al servicio para crear el artículo
+      await articleService.createArticle(formData);
+      fetchData(); // Refresca la lista de artículos después de crear uno nuevo
       setTitle('');
       setAuthor('');
       setPdfFile(null);
@@ -30,6 +33,7 @@ const SubmitArticle = ({ fetchData, handleClose }) => {
     }
   };
 
+  // Campos del formulario
   const fields = [
     { name: "title", label: "Título", type: "text", value: title, onChange: (e) => setTitle(e.target.value) },
     { name: "author", label: "Autor", type: "text", value: author, onChange: (e) => setAuthor(e.target.value) },
