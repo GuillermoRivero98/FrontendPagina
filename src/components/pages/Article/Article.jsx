@@ -7,7 +7,6 @@ import { Document, Page, pdfjs } from "react-pdf";
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 
-// Set up the worker for pdf.js
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const Article = () => {
@@ -59,7 +58,7 @@ const Article = () => {
         <p className="text-gray-600 mb-4">Autor: {article.author}</p>
         <div className="article-content">
           <Document
-            file={`http://localhost:3001${article.content}`}  // Asegúrate que esto sea correcto
+            file={`http://localhost:3001${article.content}`}  
             onLoadSuccess={onDocumentLoadSuccess}
             onLoadError={(error) => {
               console.error('Error loading PDF:', error);

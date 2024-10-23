@@ -1,25 +1,25 @@
 .form-section {
   padding: var(--padding-large, 20px);
-  background-color: var(--background-color, #f8f9fa); /* Color de fondo con valor predeterminado */
+  background-color: var(--background-color, #f8f9fa); 
   
   &__title {
     font-family: var(--heading-font-family, 'Arial, sans-serif');
     font-size: var(--font-size-large, 2rem);
-    color: var(--primary-color, #007bff); /* Azul predeterminado de Bootstrap */
+    color: var(--primary-color, #007bff); 
     margin-bottom: var(--padding-large, 20px);
   }
 
   &__content {
     font-family: var(--body-font-family, 'Arial, sans-serif');
     font-size: var(--font-size-base, 1rem);
-    color: var(--text-color, #212529); /* Color predeterminado de Bootstrap */
+    color: var(--text-color, #212529); 
     margin-bottom: var(--padding-base, 15px);
   }
 
   &__form {
     display: flex;
     flex-direction: column;
-    gap: var(--padding-base, 15px); /* Espaciado entre campos */
+    gap: var(--padding-base, 15px); 
   }
 
   &__form-label {
