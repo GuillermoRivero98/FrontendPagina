@@ -58,7 +58,7 @@ const Article = () => {
         <p className="text-gray-600 mb-4">Autor: {article.author}</p>
         <div className="article-content">
           <Document
-            file={`http://localhost:3001${article.content}`}  
+            file={`http://localhost:3001${article.filePath}`}  // Asegúrate de que la ruta sea correcta
             onLoadSuccess={onDocumentLoadSuccess}
             onLoadError={(error) => {
               console.error('Error loading PDF:', error);
