@@ -8,7 +8,7 @@ const Input = ({ type = "text", placeholder, value, onChange, name, disabled = f
     <input
       type={type}
       placeholder={placeholder}
-      value={value}
+      value={type !== 'file' ? value : undefined} // No establece `value` si el tipo es "file"
       onChange={onChange}
       name={name}
       disabled={disabled}
@@ -20,7 +20,7 @@ const Input = ({ type = "text", placeholder, value, onChange, name, disabled = f
 Input.propTypes = {
   type: PropTypes.string,
   placeholder: PropTypes.string,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string, // Cambiado a opcional
   onChange: PropTypes.func.isRequired,
   name: PropTypes.string,
   disabled: PropTypes.bool,

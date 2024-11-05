@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import Modal from "../Modal/Modal";
 import Title from "../../atoms/Title/Title";
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import "./ArticleSection.scss";
-import Modal from "../Modal/Modal";
 
 const ArticleSection = ({ articles }) => {
   const [selectedArticle, setSelectedArticle] = useState(null);
@@ -22,24 +22,31 @@ const ArticleSection = ({ articles }) => {
     <div className="article-section">
       <Title text="Artículos Destacados" />
       <div className="articles-grid">
-        {articles.map((article) => (
-          <div key={article.id} className="article-box" onClick={() => handleArticleClick(article)}>
-            <h4>{article.title}</h4>
-            <p>{article.author}</p>
-            <p>{article.summary}</p> 
-          </div>
-        ))}
-      </div>
+  {articles.map((article) => (
+    <div className="article-card" key={article.id} onClick={() => handleArticleClick(article)}>
+      <h2>{article.titulo || "Título no disponible"}</h2>
+      <p>{article.contenido || "Descripción no disponible"}</p>
+      <p><strong>Autor:</strong> {article.autor || "Autor desconocido"}</p>
+    </div>
+  ))}
+</div>
+
 
       {selectedArticle && (
         <Modal show={showModal} handleClose={handleCloseModal}>
-          <h2>{selectedArticle.title}</h2>
-          <p>Escrito por: {selectedArticle.author}</p>
+          <h2>{selectedArticle.titulo}</h2>
+          <p>Escrito por: {selectedArticle.autor}</p>
+          <img 
+            src={`http://localhost:3001/api/articles/${selectedArticle.id}/foto`} 
+            alt="Imagen del artículo" 
+            width="200" 
+            style={{ marginBottom: "20px" }} 
+          />
           <iframe
-            src={`http://localhost:3001${selectedArticle.pdfPath}`}
+            src={`http://localhost:3001/api/articles/${selectedArticle.id}/pdf`}
             width="100%"
             height="400px"
-            title={selectedArticle.title}
+            title={selectedArticle.titulo}
             frameBorder="0"
           />
           <button className="btn btn-primary mt-2" onClick={handleCloseModal}>Cerrar</button>

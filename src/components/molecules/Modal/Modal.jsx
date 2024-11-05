@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal as BootstrapModal } from 'react-bootstrap';
 import './Modal.scss'; // Archivo de estilos
 
-const Modal = ({ show, handleClose, children }) => {
+const Modal = ({ show, handleClose, title, children }) => {
   return (
     <BootstrapModal
       show={show}
@@ -12,7 +12,7 @@ const Modal = ({ show, handleClose, children }) => {
       centered // Para centrar el modal en la pantalla
     >
       <BootstrapModal.Header closeButton>
-        <BootstrapModal.Title>Artículo Completo</BootstrapModal.Title>
+        <BootstrapModal.Title>{title}</BootstrapModal.Title>
       </BootstrapModal.Header>
       <BootstrapModal.Body>
         {children}

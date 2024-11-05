@@ -1,46 +1,56 @@
 import React, { useState } from "react";
-import Modal from "../../molecules/Modal/Modal";
-import Form from "../../molecules/Form/Form";
 import articleService from "../../../services/articleService";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const SubmitArticle = ({ fetchData, handleClose }) => {
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [pdfFile, setPdfFile] = useState(null);
+  const [formData, setFormData] = useState({
+    titulo: "",
+    contenido: "",
+    autor: "",
+    pdf: null,
+    foto: null,
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleFileChange = (e) => {
+    const { name, files } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: files[0] }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('author', author);
-    formData.append('pdf', pdfFile); // Cambia aquí para agregar el archivo PDF
+    
+    const data = new FormData();
+    data.append("titulo", formData.titulo);
+    data.append("contenido", formData.contenido);
+    data.append("autor", formData.autor);
+    if (formData.pdf) data.append("pdf", formData.pdf);
+    if (formData.foto) data.append("foto", formData.foto);
+
+    console.log("Datos enviados al backend:", data);
 
     try {
-      await articleService.createArticle(formData); // Cambia aquí
+      await articleService.createArticle(data);
       fetchData();
-      setTitle('');
-      setAuthor('');
-      setPdfFile(null);
-      alert('Artículo enviado exitosamente');
-      handleClose(); // Cierra el modal después de enviar
+      handleClose();
+      alert("Artículo enviado exitosamente");
     } catch (error) {
-      console.error('Error al crear el artículo', error);
-      alert('Error al enviar el artículo.');
+      console.error("Error al crear el artículo:", error);
     }
   };
 
-  const fields = [
-    { name: "title", label: "Título", type: "text", value: title, onChange: (e) => setTitle(e.target.value) },
-    { name: "author", label: "Autor", type: "text", value: author, onChange: (e) => setAuthor(e.target.value) },
-    { name: "pdf", label: "Archivo PDF", type: "file", onChange: (e) => setPdfFile(e.target.files[0]) }
-  ];
-
   return (
-    <Modal show={true} handleClose={handleClose}>
-      <h2 className="text-center mb-3">Enviar Artículo</h2>
-      <Form fields={fields} onSubmit={handleSubmit} buttonLabel="Enviar Artículo" />
-    </Modal>
+    <form onSubmit={handleSubmit}>
+      <input name="titulo" placeholder="Título" onChange={handleChange} />
+      <textarea name="contenido" placeholder="Contenido" onChange={handleChange} />
+      <input name="autor" placeholder="Autor" onChange={handleChange} />
+      <input type="file" name="pdf" onChange={handleFileChange} />
+      <input type="file" name="foto" onChange={handleFileChange} />
+      <button type="submit">Enviar Artículo</button>
+    </form>
   );
 };
 
