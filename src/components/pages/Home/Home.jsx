@@ -60,7 +60,7 @@ const Home = () => {
   return (
     <MainTemplate>
       <div className="container mt-4">
-        <Title text="Camino A Pasitos" level={1} className="text-center mb-4" />
+        <Title text="CAMINO A PASITOS" level={1} className="text-center mb-4" />
         <button className="btn btn-primary mb-3" onClick={handleOpenSubmitModal}>
           Enviar Artículo
         </button>

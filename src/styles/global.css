@@ -1,10 +1,15 @@
 :root {
-  --primary-color: #803103;  /* Azul suave */
-  --secondary-color: hsl(25, 96%, 20%);  /* Naranja suave */
-  --background-color: #F8F8F8;  /* Fondo gris claro */
-  --text-color: #000000;  /* Texto principal */
-  --heading-font-family: 'Merriweather', serif;  /* Fuente para títulos */
-  --body-font-family: 'Open Sans', sans-serif;  /* Fuente para texto */
+  --primary-color: #679B9B;  /* Verde azulado calmante */
+  --secondary-color: #FF9A76;  /* Naranja cálido y acogedor */
+  --background-color: #d0ebf6;  /* Suave beige pastel */
+  --text-color: #637373;  /* Gris oscuro, ideal para un contraste suave */
+  --heading-color: #FF9A76;  /* Color destacado para los títulos */
+  --link-color: #679B9B;  /* Enlaces con un tono suave */
+  --hover-color: #FF9A76;  /* Efecto hover amigable */
+  --footer-background-color: #637373;  /* Fondo gris oscuro para el pie de página */
+  --footer-text-color: #FFEADB;  /* Texto claro para el pie de página */
+  --heading-font-family: 'Merriweather', serif;  /* Elegancia clásica para títulos */
+  --body-font-family: 'Open Sans', sans-serif;  /* Claridad moderna para el cuerpo */
   --font-size-base: 16px;
   --font-size-large: 20px;
   --font-size-small: 14px;
@@ -14,43 +19,64 @@
 
 body {
   padding: 0;
-  min-height: 100vh; 
+  min-height: 100vh;
   background-color: var(--background-color);
   font-family: var(--body-font-family);
   color: var(--text-color);
+  line-height: 1.6;
 }
 
-/* Títulos */
-h1 {
-  font-weight: bold;
-  text-align: center;
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading-color);
   font-family: var(--heading-font-family);
-  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: var(--padding-base);
+}
+
+/* Estilo de los enlaces */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--hover-color);
 }
 
 /* Estilo para el Modal */
 .modal-content {
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .modal-header {
   background-color: var(--primary-color);
   color: white;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
 }
 
 .modal-body {
   padding: var(--padding-large);
+  background-color: var(--background-color);
+  font-size: var(--font-size-base);
+  line-height: 1.8;
 }
 
 .modal-footer {
-  border-top: none; /* Eliminar el borde superior */
+  border-top: none;
+  background-color: var(--primary-color);
+  border-radius: 0 0 10px 10px;
+  color: white;
 }
 
 /* Botones */
 .btn {
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: var(--font-size-base);
+  transition: all 0.3s ease;
 }
 
 .btn-primary {
@@ -73,12 +99,38 @@ h1 {
 
 /* Footer */
 footer {
-  background-color: var(--primary-color);
-  color: white;
+  background-color: var(--footer-background-color);
+  color: var(--footer-text-color);
   text-align: center;
   padding: var(--padding-large);
-  margin-top: var(--padding-large);
   font-size: var(--font-size-base);
+  border-top: 5px solid var(--secondary-color);
+}
+
+/* Estilos especiales para primera infancia */
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--background-color);
+  padding: var(--padding-large);
+}
+
+.card-title {
+  font-size: var(--font-size-large);
+  color: var(--heading-color);
+  text-align: center;
+}
+
+.card-text {
+  font-size: var(--font-size-base);
+  color: var(--text-color);
+}
+
+blockquote {
+  font-style: italic;
+  color: var(--secondary-color);
+  padding-left: 10px;
+  border-left: 3px solid var(--secondary-color);
 }
 
 /* Estilos de texto */
@@ -98,9 +150,15 @@ footer {
 .alert {
   margin: var(--padding-large) auto;
   max-width: 600px;
+  background-color: var(--secondary-color);
+  color: white;
+  border-radius: 10px;
+  padding: var(--padding-base);
+  text-align: center;
+  font-weight: bold;
 }
 
-/* Carga */
+/* Spinner de carga */
 .spinner-border {
   width: 3rem;
   height: 3rem;

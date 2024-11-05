@@ -1,8 +1,8 @@
 .main-template {
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--padding-large, 20px); /* Padding con valor predeterminado */
-  background-color: var(--background-color, #f8f9fa); /* Fondo con valor predeterminado */
+  padding: var(--padding-large, 20px); 
+  background-color: var(--background-color, #f8f9fa); 
 
   &__header {
     margin-bottom: var(--padding-large, 20px);
@@ -15,7 +15,7 @@
 
   &__content {
     font-family: var(--body-font-family, 'Arial, sans-serif');
-    color: var(--text-color, #212529); /* Color predeterminado */
+    color: var(--text-color, #212529); 
     line-height: 1.6;
   }
 }

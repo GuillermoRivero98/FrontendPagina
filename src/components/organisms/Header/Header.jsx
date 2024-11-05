@@ -1,5 +1,5 @@
 import React from "react";
-import NavMenu from "../../molecules/NavMenu/NavMenu";
+//import NavMenu from "../../molecules/NavMenu/NavMenu";
 import Logo from "../../atoms/Logo/Logo"; 
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import "./Header.scss";
@@ -12,10 +12,11 @@ const Header = () => {
           <div className="header__logo">
             <Logo />
           </div>
-          <NavMenu />
+
         </div>
       </div>
     </header>
+
   );
 };
 

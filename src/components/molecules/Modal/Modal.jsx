@@ -10,6 +10,7 @@ const Modal = ({ show, handleClose, title, children }) => {
       dialogClassName="modal-90w" // Clase personalizada para el tamaño
       size="lg" // Tamaño grande del modal
       centered // Para centrar el modal en la pantalla
+      aria-labelledby="modal-title" // Accessibility attribute
     >
       <BootstrapModal.Header closeButton>
         <BootstrapModal.Title>{title}</BootstrapModal.Title>

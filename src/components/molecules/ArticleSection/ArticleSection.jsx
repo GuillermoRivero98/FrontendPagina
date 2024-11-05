@@ -1,22 +1,36 @@
 import React, { useState } from "react";
 import Modal from "../Modal/Modal";
 import Title from "../../atoms/Title/Title";
-import 'bootstrap/dist/css/bootstrap.min.css'; 
 import "./ArticleSection.scss";
 
 const ArticleSection = ({ articles }) => {
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [loadingPDF, setLoadingPDF] = useState(false);
+  const [pdfError, setPdfError] = useState(false);
 
   const handleArticleClick = (article) => {
     setSelectedArticle(article);
     setShowModal(true);
+    setLoadingPDF(true);
+    setPdfError(false);
   };
 
   const handleCloseModal = () => {
     setShowModal(false);
     setSelectedArticle(null);
+    // Reset loading state when modal is closed
+    setLoadingPDF(false);
+    setPdfError(false);
   };
+
+  // Effect to reset loading states when modal opens
+  useEffect(() => {
+    if (showModal) {
+      setLoadingPDF(true);
+      setPdfError(false);
+    }
+  }, [showModal]);
 
   return (
     <div className="article-section">
@@ -48,6 +62,14 @@ const ArticleSection = ({ articles }) => {
             height="400px"
             title={selectedArticle.titulo}
             frameBorder="0"
+            onLoad={() => {
+              setLoadingPDF(false);
+              setPdfError(false); // Reset error state on successful load
+            }}
+            onError={() => {
+              setLoadingPDF(false);
+              setPdfError(true);
+            }}
           />
           <button className="btn btn-primary mt-2" onClick={handleCloseModal}>Cerrar</button>
         </Modal>
