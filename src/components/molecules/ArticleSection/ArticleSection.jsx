@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; // Agregamos useEffect aquí
 import Modal from "../Modal/Modal";
 import Title from "../../atoms/Title/Title";
 import "./ArticleSection.scss";
@@ -19,7 +19,6 @@ const ArticleSection = ({ articles }) => {
   const handleCloseModal = () => {
     setShowModal(false);
     setSelectedArticle(null);
-    // Reset loading state when modal is closed
     setLoadingPDF(false);
     setPdfError(false);
   };
@@ -36,15 +35,14 @@ const ArticleSection = ({ articles }) => {
     <div className="article-section">
       <Title text="Artículos Destacados" />
       <div className="articles-grid">
-  {articles.map((article) => (
-    <div className="article-card" key={article.id} onClick={() => handleArticleClick(article)}>
-      <h2>{article.titulo || "Título no disponible"}</h2>
-      <p>{article.contenido || "Descripción no disponible"}</p>
-      <p><strong>Autor:</strong> {article.autor || "Autor desconocido"}</p>
-    </div>
-  ))}
-</div>
-
+        {articles.map((article) => (
+          <div className="article-card" key={article.id} onClick={() => handleArticleClick(article)}>
+            <h2>{article.titulo || "Título no disponible"}</h2>
+            <p>{article.contenido || "Descripción no disponible"}</p>
+            <p><strong>Autor:</strong> {article.autor || "Autor desconocido"}</p>
+          </div>
+        ))}
+      </div>
 
       {selectedArticle && (
         <Modal show={showModal} handleClose={handleCloseModal}>
@@ -64,7 +62,7 @@ const ArticleSection = ({ articles }) => {
             frameBorder="0"
             onLoad={() => {
               setLoadingPDF(false);
-              setPdfError(false); // Reset error state on successful load
+              setPdfError(false);
             }}
             onError={() => {
               setLoadingPDF(false);

@@ -80,3 +80,20 @@
     color: var(--text-color);
   }
 }
+.header-container {
+  background-color: transparent; /* Asegúrate de que el fondo sea transparente */
+  text-align: center;
+  padding: 30px 0;
+}
+
+.title-text {
+  font-size: 3rem; /* Ajuste del tamaño de la fuente */
+  color: #ff7f50;
+  margin: 0;
+}
+
+.button-container {
+  position: absolute;
+  top: 160px; /* Ajusta este valor para que el botón quede en la posición deseada */
+  right: 20px;
+}

@@ -1,15 +1,36 @@
-.modal-90w {
-  max-width: 90%; // Ajuste para que ocupe el 90% del ancho
-  width: 100%;
-  height: 100vh; // Ocupa el 100% de la altura de la pantalla
+/* Modal.scss o SubmitArticle.scss */
+
+.modal-body form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.modal-body {
-  padding: 0; // Elimina el padding para que el PDF ocupe todo el espacio
+.modal-body input[type="text"],
+.modal-body textarea,
+.modal-body input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
-iframe {
-  width: 100%;
-  height: 100vh; // Ocupa el 100% de la ventana visible
-  border: none; // Elimina el borde
+.modal-body button {
+  align-self: flex-end;
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-body button:hover {
+  background-color: #0056b3;
+}
+
+.modal-body textarea {
+  resize: none;
+  height: 100px;
 }

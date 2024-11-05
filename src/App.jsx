@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./styles/global.css";
 
 const Article = React.lazy(() => import("./components/pages/Article/Article"));
-const NotFound = () => <h2>Página no encontrada</h2>; // Página para rutas no existentes
+const NotFound = () => <h2>Página no encontrada</h2>;
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -17,9 +17,7 @@ function App() {
     try {
       const fetchArticles = await articleService.getArticles();
       setArticles(fetchArticles);
-      setError(null); // Limpia el error si se carga exitosamente
     } catch (error) {
-      console.error("Error en fetchData:", error);
       setError("Error al cargar los artículos");
     } finally {
       setLoading(false);
@@ -27,8 +25,8 @@ function App() {
   };
 
   useEffect(() => {
-    fetchData(); // Llama directamente a fetchData
-  }, []); // Solo una vez al montar el componente
+    fetchData();
+  }, []);
 
   if (loading) {
     return (
@@ -56,7 +54,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home articles={articles} fetchData={fetchData} />} />
             <Route path="/article/:id" element={<Article articles={articles} />} />
-            <Route path="*" element={<NotFound />} /> {/* Ruta para manejar 404 */}
+            <Route path="*" element={<NotFound />} />
+          
           </Routes>
         </React.Suspense>
       </main>

@@ -52,7 +52,7 @@ a:hover {
 
 .modal-header {
   background-color: var(--primary-color);
-  color: white;
+  color: black;
   border-bottom: none;
   border-radius: 10px 10px 0 0;
 }
@@ -68,7 +68,7 @@ a:hover {
   border-top: none;
   background-color: var(--primary-color);
   border-radius: 0 0 10px 10px;
-  color: white;
+  color: black;
 }
 
 /* Botones */
