@@ -1,0 +1,227 @@
+# Proyecto de Revista - Frontend
+
+## Descripción General
+Este proyecto gestiona la visualización y creación de artículos para una revista digital. Incluye modales para **ver** y **crear artículos**, así como funcionalidades para gestionar imágenes y PDFs asociados a cada artículo.
+
+---
+
+## Estructura de Componentes
+
+### Componentes Clave
+1. **ArticleSection**
+   - **Archivo:** `src/components/molecules/ArticleSection.jsx`
+   - **Descripción:** Este componente muestra una lista de artículos destacados y permite abrir un modal para ver los detalles de un artículo.
+   - **Modificaciones:**
+     - Se ajustó el modal de visualización para cargar correctamente imágenes y PDFs.
+     - Se añadieron clases CSS específicas para optimizar la presentación:
+       - `.author-image`: Reducir el tamaño de las imágenes de los artículos.
+       - `.file-viewer` y `.file-frame`: Ampliar el área del PDF y mejorar su visualización.
+
+2. **SubmitArticle**
+   - **Archivo:** `src/components/molecules/SubmitArticle.jsx`
+   - **Descripción:** Este componente maneja el formulario para crear nuevos artículos, incluyendo la subida de imágenes y PDFs.
+
+3. **Modal**
+   - **Archivo:** `src/components/molecules/Modal.jsx`
+   - **Descripción:** Componente genérico que se utiliza tanto para ver artículos como para crear nuevos artículos.
+
+4. **Estilos Clave**
+   - **Archivo:** `src/components/molecules/Modal.scss`
+   - **Descripción:** Maneja los estilos generales para todos los modales, incluyendo:
+     - Tamaño y centrado del modal.
+     - Estilos para imágenes (`.author-image`) y áreas de visualización de archivos (`.file-viewer`, `.file-frame`).
+
+---
+
+## Configuración del Backend y Base de Datos
+
+1. **Asegúrate de que el backend esté corriendo**
+   - Inicia el servidor del backend:
+     ```bash
+     npm start
+     ```
+
+2. **Verifica que PostgreSQL esté activo**
+   - En Linux:
+     ```bash
+     sudo service postgresql start
+     ```
+   - En Windows:
+     - Abre "Servicios", busca `PostgreSQL` y haz clic en "Iniciar".
+
+3. **Prueba las rutas del backend**
+   - Asegúrate de que la API sirva correctamente los PDFs. Prueba con:
+     ```text
+     http://localhost:3001/api/articles/:id/pdf
+     ```
+     Cambia `:id` por el ID de un artículo en la base de datos.
+
+4. **Consulta la base de datos**
+   - Conéctate a PostgreSQL y revisa los artículos:
+     ```bash
+     psql -U tu_usuario -d tu_base_de_datos
+     ```
+   - Verifica la tabla `articles`:
+     ```sql
+     SELECT * FROM articles;
+     ```
+
+---
+
+## Registro de Cambios
+
+### 2024-11-16
+1. **Solución a problemas de visualización en el modal:**
+   - Confirmado que la API del backend sirve correctamente los PDFs.
+   - Ajustado el tamaño de la imagen y ampliada el área del PDF en el modal.
+
+2. **Documentación del modal de creación de artículos (`SubmitArticle`):**
+   - Identificado como componente que utiliza el modal general para gestionar el formulario de creación.
+
+3. **Depuración del modal para ver artículos (`ArticleSection`):**
+   - Confirmado que la URL del PDF se genera correctamente.
+   - Probado que el modal se comporta como se espera tras corregir errores temporales.
+
+---
+
+## Notas Adicionales
+
+### Solución de Problemas
+1. **El PDF no se carga en el modal:**
+   - Verifica que el backend esté activo y sirviendo los archivos correctamente.
+   - Confirma que PostgreSQL está corriendo y que la tabla `articles` contiene la información del PDF.
+
+2. **El modal no se muestra correctamente:**
+   - Revisa la consola del navegador para identificar errores de JavaScript.
+   - Asegúrate de que el componente `Modal` está importado y configurado correctamente.
+
+---
+
+## Próximos Pasos
+- **Unificar estilos de modales:** Estandarizar estilos entre los modales de creación y visualización.
+- **Mejorar la validación en el formulario de creación:** Añadir mensajes de error claros para archivos PDF o imágenes incorrectas.
+## Cambios en el Diseño del Modal
+
+### Ajuste en la Colocación de la Foto y el Texto del Autor
+- **Archivo:** `src/components/molecules/ArticleSection.jsx`
+- **Descripción:** Se actualizó el diseño para que la foto del autor y el texto "Escrito por" estén alineados horizontalmente, maximizando el área de lectura del artículo.
+
+### Nuevos Estilos
+- **Archivo:** `src/components/molecules/Modal.scss`
+- **Descripción:** Se añadieron clases para alinear la imagen del autor y el texto utilizando `flexbox`, reduciendo el tamaño de la imagen y dejando más espacio para el contenido principal.
+
+### Registro de Cambios
+- [2024-11-17] Ajustada la posición de la foto y el texto "Escrito por" en el modal de artículos.
+
+# Cambios Realizados
+
+### 1. Corrección de Alineación del Encabezado
+- **Archivo:** `src/components/molecules/Modal.scss`
+- **Descripción:** Se corrigieron los estilos de `.author-info` para alinear la imagen del autor y el texto "Escrito por" al lado izquierdo del encabezado del modal.
+
+### 2. Ajuste del Tamaño de los Títulos
+- **Archivo:** `src/components/molecules/Modal.scss`
+- **Descripción:** Se aplicaron reglas CSS para aumentar el tamaño de los títulos (`.modal-title`) dentro del modal.
+
+### 3. Eliminación del Botón "Cerrar" Azul
+- **Archivo:** `src/components/molecules/ArticleSection.jsx`
+- **Descripción:** Se eliminó el botón azul "Cerrar" dentro del modal, manteniendo únicamente la "X" en la esquina superior derecha para cerrar.
+
+---
+
+## Registro de Cambios
+- **[2024-11-17]** Ajustada la alineación de la imagen del autor y el texto "Escrito por" en el encabezado del modal.
+- **[2024-11-17]** Incrementado el tamaño de los títulos dentro del modal para mejorar su visibilidad.
+- **[2024-11-17]** Eliminado el botón azul "Cerrar" del modal de artículos.
+
+## Próximos Pasos
+- Optimizar la experiencia de visualización de PDFs.
+- Mejorar la responsividad de los estilos en dispositivos móviles.
+
+# Proyecto de Revista - Backend y Frontend
+
+## Descripción General
+Este proyecto permite la visualización y creación de artículos clasificados por clases, con una estructura organizada en el frontend y un backend optimizado para almacenar archivos en PostgreSQL. Ahora se soportan múltiples clases (Clase A y Clase B) con contenido segregado.
+
+---
+
+## Cambios Recientes
+
+### 1. Soporte para Múltiples Clases
+- **Descripción:** Se añadió la capacidad de gestionar artículos por clases (Clase A y Clase B).
+- **Cambios realizados:**
+  - Se agregó un nuevo componente `ClaseB` en el frontend.
+  - Se implementó una ruta específica en el backend para filtrar artículos por clase.
+  - Se añadió navegación en el frontend con pestañas para acceder a las diferentes clases.
+
+### 2. Componente `ClaseB`
+- **Archivo:** `src/components/pages/ClaseB/ClaseB.jsx`
+- **Funcionalidad:** Carga y muestra artículos específicos de la Clase B.
+- **Código destacado:**
+  ```javascript
+  useEffect(() => {
+      axios.get("http://localhost:3001/api/articles/clase-b")
+        .then(response => setArticles(response.data))
+        .catch(error => console.error("Error al cargar artículos de Clase B:", error));
+  }, []);
+
+
+
+# README - Proyecto de Gestión de Artículos con Clases y Autenticación
+
+## **Descripción General**
+
+Este proyecto permite gestionar artículos organizados por clases (como "Camino a Pasitos" y "La Quermesina"). Los usuarios pueden iniciar sesión, subir artículos a sus clases específicas y visualizar los artículos disponibles. Los visitantes pueden explorar los artículos sin autenticación, pero no tienen acceso a las funciones de envío de artículos.
+
+---
+
+## **Cambios Implementados**
+
+### **Backend**
+
+#### **1. Usuarios y Roles**
+- **Archivo `users.js`:**
+  - Rutas añadidas:
+    - `POST /api/users/register`: Registro de usuarios.
+    - `POST /api/users/login`: Inicio de sesión de usuarios.
+  - Se implementó la autenticación de usuarios con `bcrypt` para proteger contraseñas y `JWT` para gestionar sesiones.
+
+#### **2. Protecciones en Rutas**
+- **Middleware `authenticateToken`:**
+  - Verifica que el usuario esté autenticado antes de acceder a ciertas rutas.
+  ```javascript
+  const authenticateToken = (req, res, next) => {
+      const token = req.header('Authorization')?.split(' ')[1];
+      if (!token) return res.status(401).json({ message: 'Acceso denegado' });
+      try {
+          const verified = jwt.verify(token, process.env.JWT_SECRET);
+          req.user = verified;
+          next();
+      } catch (error) {
+          res.status(401).json({ message: 'Token inválido' });
+      }
+  };
+
+Cambios realizados
+Base de datos:
+
+Agregamos las tablas usuarios y articulos.
+Añadimos la columna clase en articulos para diferenciar las clases.
+Backend:
+
+Rutas creadas para manejar usuarios (/api/users) y artículos (/api/articles).
+Implementación de autenticación con JWT.
+Encriptación de contraseñas con bcryptjs.
+Frontend:
+
+Componentes:
+Home: Página inicial que muestra los bloques "Camino a Pasitos" y "La Quermesina".
+ClaseA y ClaseB: Páginas para manejar artículos de cada clase.
+Login: Formulario para iniciar sesión.
+Servicios:
+articleService: Manejo de solicitudes para artículos.
+authService: Manejo de autenticación.
+Restricciones:
+
+Los visitantes solo pueden visualizar artículos.
+Los usuarios autenticados tienen permisos para subir artículos en su clase asignada.
