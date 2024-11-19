@@ -13,10 +13,8 @@ const Modal = ({ show, handleClose, title, children }) => {
       aria-labelledby="modal-title" // Accessibility attribute
     >
       <BootstrapModal.Header closeButton>
-    {title && <BootstrapModal.Title>{title}</BootstrapModal.Title>}
-</BootstrapModal.Header>
-
-        
+        <BootstrapModal.Title>{title}</BootstrapModal.Title>
+      </BootstrapModal.Header>
       <BootstrapModal.Body>
         {children}
       </BootstrapModal.Body>

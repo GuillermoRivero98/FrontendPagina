@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Para redirección
+import React, { useState } from 'react';
 import articleService from '../../../services/articleService';
 
 const SubmitArticle = ({ fetchData, handleClose }) => {
-  const navigate = useNavigate(); // Inicializa el hook de navegación
   const [formData, setFormData] = useState({
     titulo: '',
     contenido: '',
@@ -11,14 +9,6 @@ const SubmitArticle = ({ fetchData, handleClose }) => {
     pdf: null,
     foto: null,
   });
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      alert('Debes iniciar sesión para enviar un artículo.');
-      navigate('/login'); // Redirigir si no está autenticado
-    }
-  }, [navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,7 +36,6 @@ const SubmitArticle = ({ fetchData, handleClose }) => {
       alert('Artículo enviado exitosamente');
     } catch (error) {
       console.error('Error al crear el artículo:', error);
-      alert('Ocurrió un error al enviar el artículo.');
     }
   };
 

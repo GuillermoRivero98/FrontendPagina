@@ -34,37 +34,3 @@
   resize: none;
   height: 100px;
 }
-.author-image {
-  width: 100px;
-  height: auto;
-  border-radius: 50%;
-  display: block;
-  margin: 0 ;
-}
-
-.pdf-viewer {
-  width: 100%;
-  height: 70vh;
-  border: 1px solid #ddd;
-  overflow: hidden;
-}
-.modal .author-info {
-  display: flex;
-  align-items: center; /* Alinea verticalmente la imagen y el texto */
-  justify-content: flex-start; /* Alinea todo al lado izquierdo */
-  gap: 10px; /* Espacio entre la imagen y el texto */
-  margin-bottom: 15px; /* Espaciado inferior del contenedor */
-}
-
-.modal .author-image {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%; /* Imagen circular */
-  object-fit: cover; /* Recorta la imagen si es necesario */
-}
-
-.modal .author-text {
-  font-size: 14px;
-  color: #555; /* Color del texto */
-  text-align: left; /* Asegura que el texto esté alineado a la izquierda */
-}

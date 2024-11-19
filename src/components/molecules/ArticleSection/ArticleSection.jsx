@@ -1,64 +1,75 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"; // Agregamos useEffect aquí
 import Modal from "../Modal/Modal";
 import Title from "../../atoms/Title/Title";
-import PdfViewerModal from "../PdfViewerModal"; // Importamos el nuevo visor
 import "./ArticleSection.scss";
 
 const ArticleSection = ({ articles }) => {
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [loadingPDF, setLoadingPDF] = useState(false);
+  const [pdfError, setPdfError] = useState(false);
 
   const handleArticleClick = (article) => {
     setSelectedArticle(article);
     setShowModal(true);
+    setLoadingPDF(true);
+    setPdfError(false);
   };
 
   const handleCloseModal = () => {
     setShowModal(false);
     setSelectedArticle(null);
+    setLoadingPDF(false);
+    setPdfError(false);
   };
+
+  // Effect to reset loading states when modal opens
+  useEffect(() => {
+    if (showModal) {
+      setLoadingPDF(true);
+      setPdfError(false);
+    }
+  }, [showModal]);
 
   return (
     <div className="article-section">
-      {/* Título de la sección */}
       <Title text="Artículos Destacados" />
       <div className="articles-grid">
         {articles.map((article) => (
-          <div
-            className="article-card"
-            key={article.id}
-            onClick={() => handleArticleClick(article)}
-          >
+          <div className="article-card" key={article.id} onClick={() => handleArticleClick(article)}>
             <h2>{article.titulo || "Título no disponible"}</h2>
             <p>{article.contenido || "Descripción no disponible"}</p>
-            <p>
-              <strong>Autor:</strong> {article.autor || "Autor desconocido"}
-            </p>
+            <p><strong>Autor:</strong> {article.autor || "Autor desconocido"}</p>
           </div>
         ))}
       </div>
 
-      {/* Modal para visualizar el artículo */}
       {selectedArticle && (
         <Modal show={showModal} handleClose={handleCloseModal}>
           <h2>{selectedArticle.titulo}</h2>
-        <div className="author-info">
+          <p>Escrito por: {selectedArticle.autor}</p>
           <img 
-              src={`http://localhost:3001/api/articles/${selectedArticle.id}/foto`} 
-              alt="Imagen del autor" 
-              className="author-image" 
+            src={`http://localhost:3001/api/articles/${selectedArticle.id}/foto`} 
+            alt="Imagen del artículo" 
+            width="200" 
+            style={{ marginBottom: "20px" }} 
           />
-          <p className="author-text">Escrito por: {selectedArticle.autor}</p>
-      </div>
-
-
-
-          {/* Visor del PDF */}
-          <PdfViewerModal
-            pdfUrl={`http://localhost:3001/api/articles/${selectedArticle.id}/pdf`}
-            show={true}
-            handleClose={handleCloseModal}
+          <iframe
+            src={`http://localhost:3001/api/articles/${selectedArticle.id}/pdf`}
+            width="100%"
+            height="400px"
+            title={selectedArticle.titulo}
+            frameBorder="0"
+            onLoad={() => {
+              setLoadingPDF(false);
+              setPdfError(false);
+            }}
+            onError={() => {
+              setLoadingPDF(false);
+              setPdfError(true);
+            }}
           />
+          <button className="btn btn-primary mt-2" onClick={handleCloseModal}>Cerrar</button>
         </Modal>
       )}
     </div>
